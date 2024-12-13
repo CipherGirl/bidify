@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
@@ -14,15 +16,12 @@ const userSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
-    address: {
+    password: {
       type: String,
       required: true,
-      trim: true,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 export const User = mongoose.model('User', userSchema);
